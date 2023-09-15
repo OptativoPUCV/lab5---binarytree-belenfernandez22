@@ -765,3 +765,18 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 2728f80
+Fri 15 Sep 2023 12:42:17 AM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c:90:2: error: expected identifier or ‘(’ before ‘.’ token
+   90 | }.
+      |  ^
+treemap.c: In function ‘eraseTreeMap’:
+treemap.c:101:5: error: implicit declaration of function ‘removeNode’; did you mean ‘remove’? [-Werror=implicit-function-declaration]
+  101 |     removeNode(tree, node);
+      |     ^~~~~~~~~~
+      |     remove
+cc1: all warnings being treated as errors
+Compilation failed
+117b01c
