@@ -79,7 +79,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
 TreeNode * minimum(TreeNode * x) {
     if (x == NULL) {
-        return NULL;  // El árbol está vacío
+        return NULL;  
     }
 
     while (x->left != NULL) {
@@ -89,9 +89,43 @@ TreeNode * minimum(TreeNode * x) {
     return x;
 }
 
-void removeNode(TreeMap * tree, TreeNode* node) {
-
+vvoid removeNode(TreeMap * tree, TreeNode* node) {
+  if (node->left == NULL && node->right == NULL) {
+    if (node == tree->root) {
+      tree->root = NULL;
+    }
+    else if (node == node->parent->left) {
+      node->parent->left = NULL;
+    }
+    else if (node == node->parent->right) {
+      node->parent->right = NULL;
+    }
+    free(node);
+  }
+    else if (node->left == NULL || node->right == NULL) {
+    TreeNode* child = node->left ? node->left : node->right;
+    if (node == tree->root) {
+      tree->root = child;
+      child->parent = NULL;
+    }
+    else if (node == node->parent->left) {
+      node->parent->left = child;
+      child->parent = node->parent;
+    }
+    else if (node == node->parent->right) {
+      node->parent->right = child;
+      child->parent = node->parent;
+    }
+    free(node);
+  
+  else {
+    TreeNode* minimum = minimum(node->right);
+    node->key = minimum->key;
+    node->value = minimum->value;
+    removeNode(tree, minimum);
+  }
 }
+
 
 void eraseTreeMap(TreeMap * tree, void* key){
     if (tree == NULL || tree->root == NULL) return;

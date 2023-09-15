@@ -807,3 +807,39 @@ Fri 15 Sep 2023 12:42:47 AM UTC:
  tests:  15|4
 total_score: 25/70
 4adf5b0
+Fri 15 Sep 2023 12:46:48 AM UTC: 
+ treemap.c | 38 ++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 36 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c:92:1: error: unknown type name ‘vvoid’; did you mean ‘void’?
+   92 | vvoid removeNode(TreeMap * tree, TreeNode* node) {
+      | ^~~~~
+      | void
+treemap.c: In function ‘removeNode’:
+treemap.c:121:3: error: expected ‘}’ before ‘else’
+  121 |   else {
+      |   ^~~~
+treemap.c:122:25: error: called object ‘minimum’ is not a function or function pointer
+  122 |     TreeNode* minimum = minimum(node->right);
+      |                         ^~~~~~~
+treemap.c:122:15: note: declared here
+  122 |     TreeNode* minimum = minimum(node->right);
+      |               ^~~~~~~
+treemap.c:123:9: error: ‘TreeNode’ has no member named ‘key’
+  123 |     node->key = minimum->key;
+      |         ^~
+treemap.c:123:24: error: ‘TreeNode’ has no member named ‘key’
+  123 |     node->key = minimum->key;
+      |                        ^~
+treemap.c:124:9: error: ‘TreeNode’ has no member named ‘value’
+  124 |     node->value = minimum->value;
+      |         ^~
+treemap.c:124:26: error: ‘TreeNode’ has no member named ‘value’
+  124 |     node->value = minimum->value;
+      |                          ^~
+treemap.c:127:1: error: control reaches end of non-void function [-Werror=return-type]
+  127 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+f265630
