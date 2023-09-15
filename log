@@ -876,3 +876,28 @@ treemap.c:127:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 89b928e
+Fri 15 Sep 2023 12:47:20 AM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:122:25: error: called object ‘minimum’ is not a function or function pointer
+  122 |     TreeNode* minimum = minimum(node->right);
+      |                         ^~~~~~~
+treemap.c:122:15: note: declared here
+  122 |     TreeNode* minimum = minimum(node->right);
+      |               ^~~~~~~
+treemap.c:123:9: error: ‘TreeNode’ has no member named ‘key’
+  123 |     node->key = minimum->key;
+      |         ^~
+treemap.c:123:24: error: ‘TreeNode’ has no member named ‘key’
+  123 |     node->key = minimum->key;
+      |                        ^~
+treemap.c:124:9: error: ‘TreeNode’ has no member named ‘value’
+  124 |     node->value = minimum->value;
+      |         ^~
+treemap.c:124:26: error: ‘TreeNode’ has no member named ‘value’
+  124 |     node->value = minimum->value;
+      |                          ^~
+Compilation failed
+3729013

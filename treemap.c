@@ -89,7 +89,7 @@ TreeNode * minimum(TreeNode * x) {
     return x;
 }
 
-vvoid removeNode(TreeMap * tree, TreeNode* node) {
+void removeNode(TreeMap * tree, TreeNode* node) {
   if (node->left == NULL && node->right == NULL) {
     if (node == tree->root) {
       tree->root = NULL;
