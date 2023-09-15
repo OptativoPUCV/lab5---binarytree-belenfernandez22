@@ -5055,3 +5055,105 @@ treemap.c:255:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 3b22a3e
+Fri 15 Sep 2023 02:22:08 PM UTC: 
+ treemap.c | 495 ++++++++++++++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 373 insertions(+), 122 deletions(-)
+In file included from test.c:4:
+treemap.c:252:2: error: stray ‘#’ in program
+  252 | }#include <stdio.h>
+      |  ^
+treemap.c:252:11: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+  252 | }#include <stdio.h>
+      |           ^
+treemap.c:259:8: error: redefinition of ‘struct TreeNode’
+  259 | struct TreeNode
+      |        ^~~~~~~~
+treemap.c:8:8: note: originally defined here
+    8 | struct TreeNode
+      |        ^~~~~~~~
+treemap.c:267:8: error: redefinition of ‘struct TreeMap’
+  267 | struct TreeMap
+      |        ^~~~~~~
+treemap.c:16:8: note: originally defined here
+   16 | struct TreeMap
+      |        ^~~~~~~
+treemap.c:274:5: error: redefinition of ‘is_equal’
+  274 | int is_equal(TreeMap* tree, void* key1, void* key2)
+      |     ^~~~~~~~
+treemap.c:23:5: note: previous definition of ‘is_equal’ with type ‘int(TreeMap *, void *, void *)’
+   23 | int is_equal(TreeMap* tree, void* key1, void* key2)
+      |     ^~~~~~~~
+treemap.c:281:12: error: redefinition of ‘createTreeNode’
+  281 | TreeNode * createTreeNode(void* key, void * value)
+      |            ^~~~~~~~~~~~~~
+treemap.c:30:12: note: previous definition of ‘createTreeNode’ with type ‘TreeNode *(void *, void *)’
+   30 | TreeNode * createTreeNode(void* key, void * value)
+      |            ^~~~~~~~~~~~~~
+treemap.c:292:11: error: redefinition of ‘createTreeMap’
+  292 | TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
+      |           ^~~~~~~~~~~~~
+treemap.c:41:11: note: previous definition of ‘createTreeMap’ with type ‘TreeMap *(int (*)(void *, void *))’
+   41 | TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2))
+      |           ^~~~~~~~~~~~~
+treemap.c:301:6: error: redefinition of ‘insertTreeMap’
+  301 | void insertTreeMap(TreeMap * tree, void* key, void * value)
+      |      ^~~~~~~~~~~~~
+treemap.c:50:6: note: previous definition of ‘insertTreeMap’ with type ‘void(TreeMap *, void *, void *)’
+   50 | void insertTreeMap(TreeMap * tree, void* key, void * value)
+      |      ^~~~~~~~~~~~~
+treemap.c:342:12: error: redefinition of ‘minimum’
+  342 | TreeNode * minimum(TreeNode * x)
+      |            ^~~~~~~
+treemap.c:91:12: note: previous definition of ‘minimum’ with type ‘TreeNode *(TreeNode *)’
+   91 | TreeNode * minimum(TreeNode * x)
+      |            ^~~~~~~
+treemap.c:351:6: error: redefinition of ‘removeNode’
+  351 | void removeNode(TreeMap * tree, TreeNode* node)
+      |      ^~~~~~~~~~
+treemap.c:100:6: note: previous definition of ‘removeNode’ with type ‘void(TreeMap *, TreeNode *)’
+  100 | void removeNode(TreeMap * tree, TreeNode* node)
+      |      ^~~~~~~~~~
+treemap.c:396:6: error: redefinition of ‘eraseTreeMap’
+  396 | void eraseTreeMap(TreeMap * tree, void* key)
+      |      ^~~~~~~~~~~~
+treemap.c:145:6: note: previous definition of ‘eraseTreeMap’ with type ‘void(TreeMap *, void *)’
+  145 | void eraseTreeMap(TreeMap * tree, void* key)
+      |      ^~~~~~~~~~~~
+treemap.c:405:8: error: redefinition of ‘searchTreeMap’
+  405 | Pair * searchTreeMap(TreeMap * tree, void* key)
+      |        ^~~~~~~~~~~~~
+treemap.c:154:8: note: previous definition of ‘searchTreeMap’ with type ‘Pair *(TreeMap *, void *)’
+  154 | Pair * searchTreeMap(TreeMap * tree, void* key)
+      |        ^~~~~~~~~~~~~
+treemap.c:430:8: error: redefinition of ‘upperBound’
+  430 | Pair * upperBound(TreeMap * tree, void* key)
+      |        ^~~~~~~~~~
+treemap.c:179:8: note: previous definition of ‘upperBound’ with type ‘Pair *(TreeMap *, void *)’
+  179 | Pair * upperBound(TreeMap * tree, void* key)
+      |        ^~~~~~~~~~
+treemap.c:458:8: error: redefinition of ‘firstTreeMap’
+  458 | Pair * firstTreeMap(TreeMap * tree)
+      |        ^~~~~~~~~~~~
+treemap.c:207:8: note: previous definition of ‘firstTreeMap’ with type ‘Pair *(TreeMap *)’
+  207 | Pair * firstTreeMap(TreeMap * tree)
+      |        ^~~~~~~~~~~~
+treemap.c:474:8: error: redefinition of ‘nextTreeMap’
+  474 | Pair * nextTreeMap(TreeMap * tree)
+      |        ^~~~~~~~~~~
+treemap.c:223:8: note: previous definition of ‘nextTreeMap’ with type ‘Pair *(TreeMap *)’
+  223 | Pair * nextTreeMap(TreeMap * tree)
+      |        ^~~~~~~~~~~
+test.c: In function ‘nextTreeMap’:
+test.c:503:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:606:1: error: expected declaration or statement at end of input
+  606 | }
+      | ^
+At top level:
+test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+ee3e836
