@@ -98,9 +98,74 @@ TreeNode * minimum(TreeNode * x) {
         return minimum(x->left);
     }
 }
-void removeNode(TreeMap * tree, TreeNode* node) {
-   
+// Estructura de un nodo del árbol
+typedef struct TreeNode {
+    void* key;
+    void* value;
+    struct TreeNode* left;
+    struct TreeNode* right;
+    struct TreeNode* parent;
+} TreeNode;
+
+// Estructura del árbol
+typedef struct TreeMap {
+    TreeNode* root;
+    // Otros campos del árbol
+} TreeMap;
+
+// Función para encontrar el nodo mínimo en un subárbol
+TreeNode* minimum(TreeNode* node) {
+    while (node->left != NULL) {
+        node = node->left;
+    }
+    return node;
 }
+
+// Función para eliminar un nodo del árbol
+void removeNode(TreeMap* tree, TreeNode* node) {
+    if (node == NULL) {
+        return;
+    }
+
+    // Caso 1: Nodo sin hijos
+    if (node->left == NULL && node->right == NULL) {
+        if (node->parent == NULL) {
+            // Este era el nodo raíz
+            tree->root = NULL;
+        } else if (node == node->parent->left) {
+            node->parent->left = NULL;
+        } else {
+            node->parent->right = NULL;
+        }
+        free(node);
+    }
+    // Caso 2: Nodo con un hijo
+    else if (node->left == NULL || node->right == NULL) {
+        TreeNode* child = (node->left != NULL) ? node->left : node->right;
+        if (node->parent == NULL) {
+            // Este era el nodo raíz
+            tree->root = child;
+            child->parent = NULL;
+        } else {
+            if (node == node->parent->left) {
+                node->parent->left = child;
+            } else {
+                node->parent->right = child;
+            }
+            child->parent = node->parent;
+        }
+        free(node);
+    }
+    // Caso 3: Nodo con dos hijos
+    else {
+        TreeNode* successor = minimum(node->right);
+        // Copia los datos del sucesor al nodo que se va a eliminar
+        node->key = successor->key;
+        node->value = successor->value;
+        // Luego, elimina el sucesor (que tiene uno o ningún hijo, debido al caso 1 o 2)
+        removeNode(tree, successor);
+    }
+
 
 
 
