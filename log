@@ -961,3 +961,15 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 1ae0dba
+Fri 15 Sep 2023 01:10:51 AM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:120:10: error: ‘nodp’ undeclared (first use in this function); did you mean ‘node’?
+  120 |     free(nodp);
+      |          ^~~~
+      |          node
+treemap.c:120:10: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+e0db0fc
