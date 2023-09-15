@@ -436,3 +436,35 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 9b0914e
+Fri 15 Sep 2023 12:17:32 AM UTC: 
+ treemap.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:79:10: error: ‘aux’ undeclared (first use in this function)
+   79 |   while (aux != NULL) {
+      |          ^~~
+treemap.c:79:10: note: each undeclared identifier is reported only once for each function it appears in
+test.c:503:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:606:1: error: expected declaration or statement at end of input
+  606 | }
+      | ^
+In file included from test.c:4:
+treemap.c:84:9: note: ‘-Wmisleading-indentation’ is disabled from this point onwards, since column-tracking was disabled due to the size of the code/headers
+   84 |         else if (tree->lower_than(key, aux->pair->key))
+      |         ^~~~
+treemap.c:84:9: note: adding ‘-flarge-source-files’ will allow for more column-tracking support, at the expense of compilation time and memory
+test.c:606:1: error: expected declaration or statement at end of input
+  606 | }
+      | ^
+test.c:606:1: error: expected declaration or statement at end of input
+test.c:607: error: control reaches end of non-void function [-Werror=return-type]
+At top level:
+test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+69397cb
