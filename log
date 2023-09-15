@@ -1444,3 +1444,29 @@ treemap.c:94:12: note: previous definition of ‘minimum’ with type ‘TreeNod
       |            ^~~~~~~
 Compilation failed
 e069458
+Fri 15 Sep 2023 01:47:53 AM UTC: 
+ treemap.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:126:13: error: ‘TreeNode’ has no member named ‘key’
+  126 |         node->key = temp->key;
+      |             ^~
+treemap.c:126:25: error: ‘TreeNode’ has no member named ‘key’
+  126 |         node->key = temp->key;
+      |                         ^~
+treemap.c:127:13: error: ‘TreeNode’ has no member named ‘value’
+  127 |         node->value = temp->value;
+      |             ^~
+treemap.c:127:27: error: ‘TreeNode’ has no member named ‘value’
+  127 |         node->value = temp->value;
+      |                           ^~
+treemap.c: At top level:
+treemap.c:132:12: error: redefinition of ‘minimum’
+  132 | TreeNode * minimum(TreeNode * x) {
+      |            ^~~~~~~
+treemap.c:94:12: note: previous definition of ‘minimum’ with type ‘TreeNode *(TreeNode *)’
+   94 | TreeNode * minimum(TreeNode * x) {
+      |            ^~~~~~~
+Compilation failed
+7e90590
