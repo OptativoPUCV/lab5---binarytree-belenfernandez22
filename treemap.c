@@ -101,34 +101,56 @@ TreeNode * minimum(TreeNode * x) {
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-    if (node == NULL) {
-        return;  // El nodo es NULL
+  if (tree == NULL || node == NULL) return;
+  // Caso 1: Nodo sin hijos
+  if (node->left == NULL && node->right == NULL) {
+    // Si el nodo es la raíz, se anula el árbol
+    if (node == tree->root) {
+      tree->root = NULL;
     }
-
-    if (node->left == NULL && node->right == NULL) {
-        // Caso 1: Nodo sin hijos
-        if (node->parent->left == node) {
-            node->parent->left = NULL;
-        } else {
-            node->parent->right = NULL;
-        }
-    } else if (node->left != NULL && node->right != NULL) {
-        // Caso 3: Nodo con dos hijos
-        TreeNode* minNode = minimum(node->right);
-        node->pair = minNode->pair;
-        removeNode(tree, minNode);
-    } else {
-        // Caso 2: Nodo con un hijo
-        TreeNode* child = (node->left != NULL) ? node->left : node->right;
-        if (node->parent->left == node) {
-            node->parent->left = child;
-        } else {
-            node->parent->right = child;
-        }
-        child->parent = node->parent;
+    // Si el nodo es hijo izquierdo, se anula el puntero del padre
+    else if (node == node->parent->left) {
+      node->parent->left = NULL;
     }
-
+    // Si el nodo es hijo derecho, se anula el puntero del padre
+    else {
+      node->parent->right = NULL;
+    }
+    // Se libera la memoria del nodo
     free(node);
+  }
+  // Caso 2: Nodo con un hijo
+  else if (node->left == NULL || node->right == NULL) {
+    // Se obtiene el hijo del nodo
+    TreeNode* child = node->left ? node->left : node->right;
+    // Si el nodo es la raíz, se cambia la raíz por el hijo
+    if (node == tree->root) {
+      tree->root = child;
+      child->parent = NULL;
+    }
+    // Si el nodo es hijo izquierdo, se cambia el puntero del padre por el hijo
+    else if (node == node->parent->left) {
+      node->parent->left = child;
+      child->parent = node->parent;
+    }
+    // Si el nodo es hijo derecho, se cambia el puntero del padre por el hijo
+    else {
+      node->parent->right = child;
+      child->parent = node->parent;
+    }
+    // Se libera la memoria del nodo
+    free(node);
+  }
+  // Caso 3: Nodo con dos hijos
+  else {
+    // Se obtiene el menor nodo del subárbol derecho
+    TreeNode* minimum = minimum(node->right);
+    // Se copian los datos del mínimo al nodo
+    node->key = minimum->key;
+    node->value = minimum->value;
+    // Se elimina el mínimo recursivamente
+    removeNode(tree, minimum);
+  }
 }
 
 
