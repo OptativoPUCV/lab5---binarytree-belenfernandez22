@@ -165,7 +165,7 @@ void removeNode(TreeMap* tree, TreeNode* node) {
         // Luego, elimina el sucesor (que tiene uno o ningún hijo, debido al caso 1 o 2)
         removeNode(tree, successor);
     }
-  {}
+  
 
 
 
