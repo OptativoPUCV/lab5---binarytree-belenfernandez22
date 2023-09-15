@@ -1489,3 +1489,9 @@ treemap.c:127:27: error: ‘TreeNode’ has no member named ‘value’
       |                           ^~
 Compilation failed
 6abed4a
+Fri 15 Sep 2023 03:23:54 AM UTC: 
+ treemap.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+ tests:  26|1
+total_score: 55/70
+1a4acfd

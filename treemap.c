@@ -120,13 +120,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         node = node->left;
         free(temp);
     }
-    // Caso 3: Nodo con dos hijos
-    else {
-        TreeNode *temp = minimum(node->right);
-        node->key = temp->key;
-        node->value = temp->value;
-        removeNode(tree, temp);
-    }
+
+    
 }
       
 
