@@ -1104,3 +1104,26 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 0c211ee
+Fri 15 Sep 2023 01:30:09 AM UTC: 
+ treemap.c | 29 -----------------------------
+ 1 file changed, 29 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘eraseTreeMap’:
+treemap.c:100:5: error: implicit declaration of function ‘removeNode’; did you mean ‘remove’? [-Werror=implicit-function-declaration]
+  100 |     removeNode(tree, node);
+      |     ^~~~~~~~~~
+      |     remove
+test.c: In function ‘upperBound’:
+test.c:503:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:606:1: error: expected declaration or statement at end of input
+  606 | }
+      | ^
+At top level:
+test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+edabb11
