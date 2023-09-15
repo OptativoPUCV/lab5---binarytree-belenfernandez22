@@ -80,7 +80,6 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
         if (is_equal(tree, key, aux->pair->key)) {
             tree->current = aux;
             return aux->pair;
-    return NULL;
 }
 
 
