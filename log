@@ -591,3 +591,17 @@ treemap.c:80:1: error: expected identifier or ‘(’ before ‘}’ token
       | ^
 Compilation failed
 fd93ee1
+Fri 15 Sep 2023 12:33:17 AM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:67:5: error: expected expression before ‘/’ token
+   67 |     /newNode->parent = parent;
+      |     ^
+treemap.c: At top level:
+treemap.c:80:1: error: expected identifier or ‘(’ before ‘}’ token
+   80 | }
+      | ^
+Compilation failed
+1965166
