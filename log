@@ -230,3 +230,17 @@ treemap.c:52:6: error: old-style parameter declarations in prototyped function d
 test.c:607: error: expected ‘{’ at end of input
 Compilation failed
 73dfeb1
+Fri 15 Sep 2023 12:12:58 AM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:79:5: error: ‘return’ with no value, in function returning non-void [-Werror=return-type]
+   79 |     return ;
+      |     ^~~~~~
+treemap.c:78:8: note: declared here
+   78 | Pair * searchTreeMap(TreeMap * tree, void* key) {
+      |        ^~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+76a3043
