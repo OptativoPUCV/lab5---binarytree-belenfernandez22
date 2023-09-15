@@ -123,7 +123,7 @@ TreeNode* minimum(TreeNode* node) {
 
 // Función para eliminar un nodo del árbol
 void removeNode(TreeMap* tree, TreeNode* node) {
-void removeNode(TreeMap* tree, TreeNode* node) {
+
     if (tree == NULL || node == NULL) {
         return;
     }
