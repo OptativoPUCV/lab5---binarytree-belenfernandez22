@@ -665,3 +665,34 @@ treemap.c:80:1: error: expected identifier or ‘(’ before ‘}’ token
       | ^
 Compilation failed
 65a16bf
+Fri 15 Sep 2023 12:34:08 AM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c:52:1: error: unknown type name ‘voi’; did you mean ‘void’?
+   52 | voi insertTreeMap(TreeMap * tree, void* key, void * value) {
+      | ^~~
+      | void
+treemap.c:52:5: error: conflicting types for ‘insertTreeMap’; have ‘int(TreeMap *, void *, void *)’
+   52 | voi insertTreeMap(TreeMap * tree, void* key, void * value) {
+      |     ^~~~~~~~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:13:6: note: previous declaration of ‘insertTreeMap’ with type ‘void(TreeMap *, void *, void *)’
+   13 | void insertTreeMap(TreeMap * tree, void* key, void * value);
+      |      ^~~~~~~~~~~~~
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:62:13: error: ‘return’ with no value, in function returning non-void [-Werror=return-type]
+   62 |             return;
+      |             ^~~~~~
+treemap.c:52:5: note: declared here
+   52 | voi insertTreeMap(TreeMap * tree, void* key, void * value) {
+      |     ^~~~~~~~~~~~~
+treemap.c: At top level:
+treemap.c:80:1: error: expected identifier or ‘(’ before ‘}’ token
+   80 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+225665e
