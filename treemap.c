@@ -152,7 +152,7 @@ Pair* upperBound(TreeMap* tree, void* key) {
     }
 
     return (ub_node != NULL) ? ub_node->pair : NULL;
-  {{{
+  {{
 
 Pair * firstTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->root == NULL) {
