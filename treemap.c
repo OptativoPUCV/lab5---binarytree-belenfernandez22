@@ -78,11 +78,15 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
 
 TreeNode * minimum(TreeNode * x) {
-    if (x == NULL || x->left == NULL) {
-        return NULL;
+    if (x == NULL) {
+        return NULL;  // El árbol está vacío
     }
-    return minimum(x->left);
-}
+
+    while (x->left != NULL) {
+        x = x->left;
+    }
+
+    return x;
 
 
 void removeNode(TreeMap * tree, TreeNode* node) {
