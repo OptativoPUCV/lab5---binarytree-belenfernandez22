@@ -1001,3 +1001,12 @@ Fri 15 Sep 2023 01:11:24 AM UTC:
  1 file changed, 1 insertion(+), 1 deletion(-)
  tests:  0|0
 6ca34d4
+Fri 15 Sep 2023 01:21:15 AM UTC: 
+ treemap.c | 34 +++++++++++++++++++++++++++++++---
+ 1 file changed, 31 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+treemap.c:162:11: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+  162 | Pair Pair * firstTreeMap(TreeMap * tree) {
+      |           ^
+Compilation failed
+d688929
