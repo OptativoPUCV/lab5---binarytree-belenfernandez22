@@ -509,3 +509,28 @@ treemap.c:53:13: error: unused variable ‘node’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 4d1c9a3
+Fri 15 Sep 2023 12:31:02 AM UTC: 
+ treemap.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:63:9: error: expected expression before ‘}’ token
+   63 |         }
+      |         ^
+treemap.c:63:9: error: ‘return’ with a value, in function returning void [-Werror=return-type]
+treemap.c:52:6: note: declared here
+   52 | void insertTreeMap(TreeMap * tree, void* key, void * value) {
+      |      ^~~~~~~~~~~~~
+treemap.c:70:29: error: expected ‘;’ before ‘}’ token
+   70 |         tree->root = newNode
+      |                             ^
+      |                             ;
+   71 |     } else if (tree->lower_than(key, parent->pair->key)) {
+      |     ~                        
+treemap.c: At top level:
+treemap.c:80:1: error: expected identifier or ‘(’ before ‘}’ token
+   80 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+898e7a2
