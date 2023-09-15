@@ -1010,3 +1010,35 @@ treemap.c:162:11: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__a
       |           ^
 Compilation failed
 d688929
+Fri 15 Sep 2023 01:21:42 AM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c:162:1: error: unknown type name ‘Pai’; did you mean ‘Pair’?
+  162 | Pai * firstTreeMap(TreeMap * tree) {
+      | ^~~
+      | Pair
+treemap.c:162:7: error: conflicting types for ‘firstTreeMap’; have ‘int *(TreeMap *)’
+  162 | Pai * firstTreeMap(TreeMap * tree) {
+      |       ^~~~~~~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:21:8: note: previous declaration of ‘firstTreeMap’ with type ‘Pair *(TreeMap *)’
+   21 | Pair * firstTreeMap(TreeMap * tree);
+      |        ^~~~~~~~~~~~
+In file included from test.c:4:
+treemap.c: In function ‘firstTreeMap’:
+treemap.c:173:16: error: returning ‘Pair *’ from a function with incompatible return type ‘int *’ [-Werror=incompatible-pointer-types]
+  173 |     return node->pair;
+      |            ~~~~^~~~~~
+test.c: In function ‘first_test1’:
+test.c:318:15: error: initialization of ‘Pair *’ from incompatible pointer type ‘int *’ [-Werror=incompatible-pointer-types]
+  318 |     Pair* aux=firstTreeMap(tree);
+      |               ^~~~~~~~~~~~
+test.c: In function ‘first_test2’:
+test.c:340:16: error: initialization of ‘Pair *’ from incompatible pointer type ‘int *’ [-Werror=incompatible-pointer-types]
+  340 |     Pair* pair=firstTreeMap(tree);
+      |                ^~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+b6a118e

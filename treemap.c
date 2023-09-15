@@ -159,7 +159,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
     return NULL;
 }
 
-Pair Pair * firstTreeMap(TreeMap * tree) {
+Pai * firstTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->root == NULL) {
         return NULL;  // El árbol está vacío
     }
