@@ -77,3 +77,21 @@ treemap.c:56:5: error: expected identifier or ‘(’ before ‘return’
       |     ^~~~~~
 Compilation failed
 f544ccd
+Fri 15 Sep 2023 12:10:45 AM UTC: 
+ treemap.c | 19 +++----------------
+ 1 file changed, 3 insertions(+), 16 deletions(-)
+test.c: In function ‘createTreeMap’:
+test.c:503:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:606:1: error: expected declaration or statement at end of input
+  606 | }
+      | ^
+test.c:607: error: control reaches end of non-void function [-Werror=return-type]
+At top level:
+test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+9592f27
