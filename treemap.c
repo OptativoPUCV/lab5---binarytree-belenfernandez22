@@ -117,7 +117,7 @@ vvoid removeNode(TreeMap * tree, TreeNode* node) {
       child->parent = node->parent;
     }
     free(node);
-  
+  }
   else {
     TreeNode* minimum = minimum(node->right);
     node->key = minimum->key;
