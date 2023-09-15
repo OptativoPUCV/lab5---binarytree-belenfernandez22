@@ -117,7 +117,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         child->parent = node->parent;
     }
 
-    free(nodp);
+    free(nodoo);
 
    }
 
