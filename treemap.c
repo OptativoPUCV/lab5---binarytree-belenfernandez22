@@ -61,10 +61,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         } else {
             return;
         }
-    }
+    }+
 
     TreeNode* newNode = createTreeNode(key, value);
-    /newNode->parent = parent;
+    newNode->parent = parent;
 
     if (parent == NULL) {
         tree->root = newNode;

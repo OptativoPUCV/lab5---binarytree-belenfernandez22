@@ -605,3 +605,22 @@ treemap.c:80:1: error: expected identifier or ‘(’ before ‘}’ token
       | ^
 Compilation failed
 1965166
+Fri 15 Sep 2023 12:33:29 AM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:66:5: error: expected expression before ‘TreeNode’
+   66 |     TreeNode* newNode = createTreeNode(key, value);
+      |     ^~~~~~~~
+treemap.c:67:5: error: ‘newNode’ undeclared (first use in this function); did you mean ‘node’?
+   67 |     newNode->parent = parent;
+      |     ^~~~~~~
+      |     node
+treemap.c:67:5: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c: At top level:
+treemap.c:80:1: error: expected identifier or ‘(’ before ‘}’ token
+   80 | }
+      | ^
+Compilation failed
+9c45c04
