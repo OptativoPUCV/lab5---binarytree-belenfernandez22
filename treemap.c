@@ -45,12 +45,11 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
     new->lower_than = lower_than;
     new->root = NULL;
     new->current = NULL;
-
     return new;
 }
 
 
-void insertTreeMap(TreeMap * tree, void* key, void * value) {
+void insertTreeMap(TreeMap * tree, void* key, void * value) 
 
 }
 
