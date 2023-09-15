@@ -98,29 +98,6 @@ TreeNode * minimum(TreeNode * x) {
         return minimum(x->left);
     }
 }
-// Estructura de un nodo del árbol
-typedef struct TreeNode {
-    void* key;
-    void* value;
-    struct TreeNode* left;
-    struct TreeNode* right;
-    struct TreeNode* parent;
-} TreeNode;
-
-// Estructura del árbol
-typedef struct TreeMap {
-    TreeNode* root;
-    // Otros campos del árbol
-} TreeMap;
-
-// Función para encontrar el nodo mínimo en un subárbol
-TreeNode* minimum(TreeNode* node) {
-    while (node->left != NULL) {
-        node = node->left;
-    }
-    return node;
-}
-
 // Función para eliminar un nodo del árbol
 void removeNode(TreeMap* tree, TreeNode* node) {
 
@@ -170,6 +147,30 @@ void removeNode(TreeMap* tree, TreeNode* node) {
         // Luego, elimina el sucesor (que tiene uno o ningún hijo, debido al caso 1 o 2)
         removeNode(tree, successor);
     }
+}
+
+
+// Estructura de un nodo del árbol
+typedef struct TreeNode {
+    void* key;
+    void* value;
+    struct TreeNode* left;
+    struct TreeNode* right;
+    struct TreeNode* parent;
+} TreeNode;
+
+// Estructura del árbol
+typedef struct TreeMap {
+    TreeNode* root;
+    // Otros campos del árbol
+} TreeMap;
+
+// Función para encontrar el nodo mínimo en un subárbol
+TreeNode* minimum(TreeNode* node) {
+    while (node->left != NULL) {
+        node = node->left;
+    }
+    return node;
 }
 
 
