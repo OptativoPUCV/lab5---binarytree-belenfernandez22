@@ -5402,3 +5402,299 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 b1160dd
+Fri 15 Sep 2023 02:22:35 PM UTC: 
+ treemap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c:102:16: error: redefinition of ‘struct TreeNode’
+  102 | typedef struct TreeNode {
+      |                ^~~~~~~~
+treemap.c:9:8: note: originally defined here
+    9 | struct TreeNode {
+      |        ^~~~~~~~
+treemap.c:108:3: error: conflicting types for ‘TreeNode’; have ‘struct TreeNode’
+  108 | } TreeNode;
+      |   ^~~~~~~~
+treemap.c:6:25: note: previous declaration of ‘TreeNode’ with type ‘TreeNode’
+    6 | typedef struct TreeNode TreeNode;
+      |                         ^~~~~~~~
+treemap.c:111:16: error: redefinition of ‘struct TreeMap’
+  111 | typedef struct TreeMap {
+      |                ^~~~~~~
+treemap.c:16:8: note: originally defined here
+   16 | struct TreeMap {
+      |        ^~~~~~~
+treemap.c:114:3: error: conflicting types for ‘TreeMap’; have ‘struct TreeMap’
+  114 | } TreeMap;
+      |   ^~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:4:24: note: previous declaration of ‘TreeMap’ with type ‘TreeMap’
+    4 | typedef struct TreeMap TreeMap;
+      |                        ^~~~~~~
+In file included from test.c:4:
+treemap.c:117:11: error: conflicting types for ‘minimum’; have ‘TreeNode *(TreeNode *)’
+  117 | TreeNode* minimum(TreeNode* node) {
+      |           ^~~~~~~
+treemap.c:94:12: note: previous definition of ‘minimum’ with type ‘TreeNode *(TreeNode *)’
+   94 | TreeNode * minimum(TreeNode * x) {
+      |            ^~~~~~~
+treemap.c:176:6: error: conflicting types for ‘eraseTreeMap’; have ‘void(TreeMap *, void *)’
+  176 | void eraseTreeMap(TreeMap * tree, void* key){
+      |      ^~~~~~~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:15:6: note: previous declaration of ‘eraseTreeMap’ with type ‘void(TreeMap *, void *)’
+   15 | void eraseTreeMap(TreeMap * tree, void* key);
+      |      ^~~~~~~~~~~~
+In file included from test.c:4:
+treemap.c: In function ‘eraseTreeMap’:
+treemap.c:179:23: error: passing argument 1 of ‘searchTreeMap’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  179 |     if (searchTreeMap(tree, key) == NULL) return;
+      |                       ^~~~
+      |                       |
+      |                       TreeMap *
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:17:32: note: expected ‘TreeMap *’ but argument is of type ‘TreeMap *’
+   17 | Pair * searchTreeMap(TreeMap * tree, void* key);
+      |                      ~~~~~~~~~~^~~~
+In file included from test.c:4:
+treemap.c:180:26: error: ‘TreeMap’ has no member named ‘current’
+  180 |     TreeNode* node = tree->current;
+      |                          ^~
+treemap.c: At top level:
+treemap.c:187:7: error: conflicting types for ‘searchTreeMap’; have ‘Pair *(TreeMap *, void *)’
+  187 | Pair* searchTreeMap(TreeMap* tree, void* key) {
+      |       ^~~~~~~~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:17:8: note: previous declaration of ‘searchTreeMap’ with type ‘Pair *(TreeMap *, void *)’
+   17 | Pair * searchTreeMap(TreeMap * tree, void* key);
+      |        ^~~~~~~~~~~~~
+In file included from test.c:4:
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:191:36: error: ‘TreeNode’ has no member named ‘pair’
+  191 |         if (is_equal(tree, key, aux->pair->key)) {
+      |                                    ^~
+treemap.c:191:22: error: passing argument 1 of ‘is_equal’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  191 |         if (is_equal(tree, key, aux->pair->key)) {
+      |                      ^~~~
+      |                      |
+      |                      TreeMap *
+treemap.c:22:23: note: expected ‘TreeMap *’ but argument is of type ‘TreeMap *’
+   22 | int is_equal(TreeMap* tree, void* key1, void* key2){
+      |              ~~~~~~~~~^~~~
+treemap.c:192:17: error: ‘TreeMap’ has no member named ‘current’
+  192 |             tree->current = aux;
+      |                 ^~
+treemap.c:193:23: error: ‘TreeNode’ has no member named ‘pair’
+  193 |             return aux->pair;
+      |                       ^~
+treemap.c:194:24: error: ‘TreeMap’ has no member named ‘lower_than’
+  194 |         } else if (tree->lower_than(key, aux->pair->key)) {
+      |                        ^~
+treemap.c:194:45: error: ‘TreeNode’ has no member named ‘pair’
+  194 |         } else if (tree->lower_than(key, aux->pair->key)) {
+      |                                             ^~
+treemap.c: At top level:
+treemap.c:206:7: error: conflicting types for ‘upperBound’; have ‘Pair *(TreeMap *, void *)’
+  206 | Pair* upperBound(TreeMap* tree, void* key) {
+      |       ^~~~~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:19:8: note: previous declaration of ‘upperBound’ with type ‘Pair *(TreeMap *, void *)’
+   19 | Pair * upperBound(TreeMap * tree, void* key);
+      |        ^~~~~~~~~~
+In file included from test.c:4:
+treemap.c: In function ‘upperBound’:
+treemap.c:211:17: error: ‘TreeMap’ has no member named ‘lower_than’
+  211 |         if (tree->lower_than(key, node->pair->key)) {
+      |                 ^~
+treemap.c:211:39: error: ‘TreeNode’ has no member named ‘pair’
+  211 |         if (tree->lower_than(key, node->pair->key)) {
+      |                                       ^~
+treemap.c:214:24: error: ‘TreeMap’ has no member named ‘lower_than’
+  214 |         } else if (tree->lower_than(node->pair->key, key)) {
+      |                        ^~
+treemap.c:214:41: error: ‘TreeNode’ has no member named ‘pair’
+  214 |         } else if (tree->lower_than(node->pair->key, key)) {
+      |                                         ^~
+treemap.c:217:24: error: ‘TreeNode’ has no member named ‘pair’
+  217 |             return node->pair;  // La clave es igual a la clave del nodo
+      |                        ^~
+treemap.c:221:39: error: ‘TreeNode’ has no member named ‘pair’
+  221 |     return (ub_node != NULL) ? ub_node->pair : NULL;
+      |                                       ^~
+treemap.c: At top level:
+treemap.c:224:8: error: conflicting types for ‘firstTreeMap’; have ‘Pair *(TreeMap *)’
+  224 | Pair * firstTreeMap(TreeMap * tree) {
+      |        ^~~~~~~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:21:8: note: previous declaration of ‘firstTreeMap’ with type ‘Pair *(TreeMap *)’
+   21 | Pair * firstTreeMap(TreeMap * tree);
+      |        ^~~~~~~~~~~~
+In file included from test.c:4:
+treemap.c: In function ‘firstTreeMap’:
+treemap.c:234:9: error: ‘TreeMap’ has no member named ‘current’
+  234 |     tree->current = node;
+      |         ^~
+treemap.c:235:16: error: ‘TreeNode’ has no member named ‘pair’
+  235 |     return node->pair;
+      |                ^~
+treemap.c: At top level:
+treemap.c:238:8: error: conflicting types for ‘nextTreeMap’; have ‘Pair *(TreeMap *)’
+  238 | Pair * nextTreeMap(TreeMap * tree) {
+      |        ^~~~~~~~~~~
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:23:8: note: previous declaration of ‘nextTreeMap’ with type ‘Pair *(TreeMap *)’
+   23 | Pair * nextTreeMap(TreeMap * tree);
+      |        ^~~~~~~~~~~
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:239:29: error: ‘TreeMap’ has no member named ‘current’
+  239 |     if (tree == NULL || tree->current == NULL) {
+      |                             ^~
+treemap.c:243:26: error: ‘TreeMap’ has no member named ‘current’
+  243 |     TreeNode* node = tree->current;
+      |                          ^~
+treemap.c:256:9: error: ‘TreeMap’ has no member named ‘current’
+  256 |     tree->current = node;
+      |         ^~
+treemap.c:257:33: error: ‘TreeNode’ has no member named ‘pair’
+  257 |     return (node != NULL) ? node->pair : NULL;
+      |                                 ^~
+test.c: In function ‘initializeTree’:
+test.c:61:9: error: ‘TreeMap’ has no member named ‘lower_than’
+   61 |     tree->lower_than = lower_than_int;
+      |         ^~
+test.c:63:15: error: assignment to ‘TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+   63 |     tree->root=createTreeNode(&p->id, p);
+      |               ^
+test.c:65:22: error: assignment to ‘struct TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+   65 |     tree->root->right=createTreeNode(&p->id, p);
+      |                      ^
+test.c:68:28: error: assignment to ‘struct TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+   68 |     tree->root->right->left=createTreeNode(&p->id, p);
+      |                            ^
+test.c:71:21: error: assignment to ‘struct TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+   71 |     tree->root->left=createTreeNode(&p->id, p);
+      |                     ^
+test.c: In function ‘create_test1’:
+test.c:77:18: error: initialization of ‘TreeMap *’ from incompatible pointer type ‘TreeMap *’ [-Werror=incompatible-pointer-types]
+   77 |     TreeMap* t = createTreeMap(lower_than_int);
+      |                  ^~~~~~~~~~~~~
+test.c:93:9: error: ‘TreeMap’ has no member named ‘lower_than’
+   93 |     if(t->lower_than != lower_than_int || t->lower_than(&i,&j) !=1 ) {
+      |         ^~
+test.c:93:44: error: ‘TreeMap’ has no member named ‘lower_than’
+   93 |     if(t->lower_than != lower_than_int || t->lower_than(&i,&j) !=1 ) {
+      |                                            ^~
+test.c: In function ‘search_test1’:
+test.c:112:12: error: ‘TreeMap’ has no member named ‘current’
+  112 |     if(tree->current != tree->root){
+      |            ^~
+test.c: In function ‘search_test2’:
+test.c:131:12: error: ‘TreeMap’ has no member named ‘current’
+  131 |     if(tree->current != tree->root->right){
+      |            ^~
+test.c: In function ‘search_test3’:
+test.c:151:12: error: ‘TreeMap’ has no member named ‘current’
+  151 |     if(tree->current != tree->root->right->left){
+      |            ^~
+test.c: In function ‘insert_test1’:
+test.c:175:19: error: passing argument 1 of ‘insertTreeMap’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  175 |     insertTreeMap(tree, &p->id, p);
+      |                   ^~~~
+      |                   |
+      |                   TreeMap *
+In file included from test.c:4:
+treemap.c:54:29: note: expected ‘TreeMap *’ but argument is of type ‘TreeMap *’
+   54 | void insertTreeMap(TreeMap* tree, void* key, void* value) {
+      |                    ~~~~~~~~~^~~~
+test.c: In function ‘insert_test2’:
+test.c:192:19: error: passing argument 1 of ‘insertTreeMap’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  192 |     insertTreeMap(tree, &p->id, p);
+      |                   ^~~~
+      |                   |
+      |                   TreeMap *
+In file included from test.c:4:
+treemap.c:54:29: note: expected ‘TreeMap *’ but argument is of type ‘TreeMap *’
+   54 | void insertTreeMap(TreeMap* tree, void* key, void* value) {
+      |                    ~~~~~~~~~^~~~
+test.c:196:34: error: ‘struct TreeNode’ has no member named ‘pair’
+  196 |            tree->root->left->left->pair->value!=p) {
+      |                                  ^~
+test.c:203:41: error: ‘struct TreeNode’ has no member named ‘pair’
+  203 |             (int*)tree->root->left->left->pair->key!=&p->id) {
+      |                                         ^~
+test.c:214:12: error: ‘TreeMap’ has no member named ‘current’
+  214 |     if(tree->current != tree->root->left->left){
+      |            ^~
+test.c: In function ‘minimum_test’:
+test.c:232:20: error: ‘TreeNode’ has no member named ‘pair’
+  232 |     if ( *((int*) n->pair->key) != 1273){
+      |                    ^~
+test.c:233:91: error: ‘TreeNode’ has no member named ‘pair’
+  233 |         sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 1273)",*((int*) n->pair->key));
+      |                                                                                           ^~
+test.c:247:27: error: assignment to ‘struct TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+  247 |     tree->root->left->left=createTreeNode(&p->id, p);
+      |                           ^
+test.c:251:20: error: ‘TreeNode’ has no member named ‘pair’
+  251 |     if ( *((int*) n->pair->key) != 100){
+      |                    ^~
+test.c:252:90: error: ‘TreeNode’ has no member named ‘pair’
+  252 |         sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 100)",*((int*) n->pair->key));
+      |                                                                                          ^~
+test.c: In function ‘erase_test2’:
+test.c:283:36: error: ‘struct TreeNode’ has no member named ‘pair’
+  283 |     if( * ((int*) tree->root->right->pair->key) != 6980) {
+      |                                    ^~
+test.c: In function ‘erase_test3’:
+test.c:304:29: error: ‘TreeNode’ has no member named ‘pair’
+  304 |     if( * ((int*) tree->root->pair->key) != 6980){
+      |                             ^~
+test.c:309:36: error: ‘struct TreeNode’ has no member named ‘pair’
+  309 |     if( * ((int*) tree->root->right->pair->key) != 8213){
+      |                                    ^~
+test.c: In function ‘first_test2’:
+test.c:337:27: error: assignment to ‘struct TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+  337 |     tree->root->left->left=createTreeNode(&p->id, p);
+      |                           ^
+test.c: In function ‘next_test1’:
+test.c:355:28: error: assignment to ‘struct TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+  355 |     tree->root->left->right=createTreeNode(&p->id, p);
+      |                            ^
+test.c:359:9: error: ‘TreeMap’ has no member named ‘current’
+  359 |     tree->current = tree->root->left;
+      |         ^~
+test.c: In function ‘next_test2’:
+test.c:379:9: error: ‘TreeMap’ has no member named ‘current’
+  379 |     tree->current = tree->root;
+      |         ^~
+test.c: In function ‘next_test3’:
+test.c:409:28: error: assignment to ‘struct TreeNode *’ from incompatible pointer type ‘TreeNode *’ [-Werror=incompatible-pointer-types]
+  409 |     tree->root->left->right=createTreeNode(&p->id, p);
+      |                            ^
+test.c:412:9: error: ‘TreeMap’ has no member named ‘current’
+  412 |     tree->current=tree->root->left->right;
+      |         ^~
+In file included from test.c:4:
+treemap.c: In function ‘upperBound’:
+treemap.c:222:4: error: control reaches end of non-void function [-Werror=return-type]
+  222 |    }
+      |    ^
+treemap.c: In function ‘firstTreeMap’:
+treemap.c:236:1: error: control reaches end of non-void function [-Werror=return-type]
+  236 | }
+      | ^
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:258:1: error: control reaches end of non-void function [-Werror=return-type]
+  258 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+4a91c8a
