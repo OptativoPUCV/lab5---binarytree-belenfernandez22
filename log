@@ -1042,3 +1042,8 @@ test.c:340:16: error: initialization of ‘Pair *’ from incompatible pointer t
 cc1: all warnings being treated as errors
 Compilation failed
 b6a118e
+Fri 15 Sep 2023 01:22:06 AM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+d9cf4da
