@@ -51,8 +51,44 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 
-void insertTreeMap(TreeMap * tree, void* key, void * value) {
+void insertTreeMap(TreeMap* tree, void* key, void* value) {
+    if (tree == NULL) {
+        return;  // El árbol está vacío
+    }
 
+    // Buscar la clave en el árbol
+    Pair* pair = searchTreeMap(tree, key);
+    if (pair != NULL) {
+        return;  // La clave ya existe en el árbol
+    }
+
+    // Crear un nuevo nodo
+    TreeNode* newNode = createTreeNode(key, value);
+    if (newNode == NULL) {
+        return;  // No se pudo asignar memoria para el nuevo nodo
+    }
+
+    // Insertar el nuevo nodo en el árbol
+    TreeNode* aux = tree->root;
+    TreeNode* parent = NULL;
+    while (aux != NULL) {
+        parent = aux;
+        if (tree->lower_than(key, aux->pair->key)) {
+            aux = aux->left;
+        } else {
+            aux = aux->right;
+        }
+    }
+
+    if (tree->lower_than(key, parent->pair->key)) {
+        parent->left = newNode;
+    } else {
+        parent->right = newNode;
+    }
+    newNode->parent = parent;
+
+    // Hacer que current apunte al nuevo nodo
+    tree->current = newNode;
 }
 
 TreeNode * minimum(TreeNode * x){
